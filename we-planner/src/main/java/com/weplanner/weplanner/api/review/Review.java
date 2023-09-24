@@ -10,8 +10,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@SQLDelete(sql= "UPDATE plan_review SET deleted_at = current_timestamp WHERE id = ?")
+@Where(clause = "deleted_at is null")
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@DynamicInsert
 @Table(name = "plan_review")
 public class Review {
     @Id
@@ -32,7 +46,8 @@ public class Review {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = true)
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     @Column(name = "deleted_at", nullable = true)
