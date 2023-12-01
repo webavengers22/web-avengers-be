@@ -19,11 +19,8 @@ public class Question {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "customer_id", nullable=false)
-    private Long customerId;
-
-    @Column(name="user_id", nullable = false)
-    private Long userId;
+    @Column(name = "customer_service_id", nullable=false)
+    private Long customerServiceId;
 
     @Column(name = "title", length = 50, nullable = false)
     private String title;

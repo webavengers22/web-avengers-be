@@ -14,8 +14,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-@Table(name = "customer")
-public class Customer {
+@Table(name = "customer_service")
+public class CustomerService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
